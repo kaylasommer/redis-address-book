@@ -1,0 +1,16 @@
+extends ../shared/template
+block content
+  h2 Addresses
+
+  table
+    thead
+      th Name
+      th Email
+      th Twitter
+    tbody
+      tr(style='background-color: #{address.color};');
+        td= address.name
+        td= address.email
+        td= address.twitter
+
+block scripts

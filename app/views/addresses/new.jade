@@ -1,0 +1,20 @@
+extends ../shared/template
+block content
+  h2 Add an Address
+
+  form.form.form-horizontal(roll='form', method='post', action='/addresses')
+    .form-group
+      label(for='name') Name
+        input.form-control.input-lg#name(type='text', name='name', autofocus:true)
+    .form-group
+      label(for='email') Email
+        input.form-control.input-lg#email(type='email', name='email')
+    .form-group
+      label(for='color') Color
+        input.form-control.input-lg#color(type='color', name='color', value='red')
+    .form-group
+      label(for='color') Twitter
+        input.form-control.input-lg#twitter(type='text', name='twitter')
+    button.btn.btn-primary(type='submit') Add
+
+block scripts

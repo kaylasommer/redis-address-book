@@ -17,20 +17,29 @@ exports.create = function(req, res){
 };
 
 exports.login = function(req,res){
+  //console.log('looking into res.locals');
+  //console.log(res.locals);
   res.render('users/login');
 };
 
 exports.authenticate = function(req, res){
   User.authenticate(req.body, function(user){
     if(user){
-      //make a cookie
-      req.session.userId = user._id;
-      req.session.save(function(){
-        res.redirect('/');
+      req.session.regenerate(function(){
+        req.session.userId = user._id;
+        req.session.save(function(){
+          res.redirect('/');
+        });
       });
     }else{
       res.redirect('/login');
     }
+  });
+};
+
+exports.logout = function(req, res){
+  req.session.destroy(function(){
+    res.redirect('/');
   });
 };
 

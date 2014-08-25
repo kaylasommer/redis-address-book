@@ -10,5 +10,14 @@
 
     .collapse.navbar-collapse#bs-navbar-collapse
       ul.nav.navbar-nav.navbar-right
-        li: a(href='/register') Register
-        li: a(href='/login') Login
+        if(!user)
+          li: a(href='/register') Join Us!
+          li: a(href='/login') Login
+        else
+          li: a(href='/addresses/new') Add Addresses
+          li: a(href='/addresses') Show Addresses
+          li
+            form.navbar-form(method='post', action='/logout')
+              .form-group
+                input(type='hidden', name='_method', value='delete')
+                button.btn.btn-danger= user.email

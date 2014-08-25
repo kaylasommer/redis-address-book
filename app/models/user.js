@@ -1,6 +1,7 @@
 'use strict';
 
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt'),
+    Mongo  = require('mongodb');
 
 function User(){
 }
@@ -29,6 +30,11 @@ User.authenticate = function(o, cb){
     if(!isOk){return cb();}
     cb(user);
   });
+};
+
+User.findById = function(id, cb){
+  var _id = Mongo.ObjectID(id);
+  User.collection.findOne({_id:_id}, cb);
 };
 
 module.exports = User;
