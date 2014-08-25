@@ -1,0 +1,16 @@
+extends ../shared/template
+block content
+  h2 User Login
+
+  form.form.form-horizontal(roll='form', method='post', action='/login')
+    .form-group
+      label(for='email') Email
+        input.form-control.input-lg#email(type='email', name='email', autofocus:true)
+    .form-group
+      label(for='password') Password
+        input.form-control.input-lg#password(type='password', name='password')
+    button.btn.btn-primary(type='submit') Login
+
+block scripts
+
+
