@@ -2,14 +2,14 @@ extends ../shared/template
 block content
   h2 Addresses
 
-  table
+  table.table.table-bordered.table-hover
     thead
       th Name
       th Email
       th Twitter
     tbody
       each address in addresses
-        tr
+        tr(style='background-color: #{address.color};')
           td= address.name
           td= address.email
           td= address.twitter

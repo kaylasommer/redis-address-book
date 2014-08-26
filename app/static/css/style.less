@@ -1,17 +1,23 @@
 @base: #eee;
+@accent: #C8C6C6;
+@darktone: #25263B;
 
 body{
   background-color: @base;
   background-image: url('/img/pw_maze_white.png');
 
   div#nav {
-    background-color: #25263B;
-    border: 1px solid #25263B;
+    background-color: @darktone;
+    border: 1px solid @darktone;
     border-radius: 0px;
   }
 }
 .navbar-brand, .navbar-default, .navbar a{
-    color: #C8C6C6 !important;
+    color: @accent !important;
 }
 
-
+.table {
+  th {
+    background-color: @accent;
+  }
+}
