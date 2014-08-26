@@ -10,7 +10,7 @@ User.register = function(o, cb){
   User.collection.findOne({email:o.email}, function(err, user){
     if(user){return cb();}
     o.password = bcrypt.hashSync(o.password, 10);
-    User.collection.save(user, cb);
+    User.collection.save(o, cb);
   });
 };
 

@@ -7,7 +7,9 @@ exports.new = function(req, res){
 };
 
 exports.index = function(req, res){
-  res.render('addresses/index');
+  Address.findAllByUserId(res.locals.user._id, function(err, addresses){
+    res.render('addresses/index', {addresses:addresses});
+  });
 };
 
 exports.create = function(req, res){

@@ -1,15 +1,23 @@
 extends ../shared/template
 block content
-  h2 User Register
+  h2.text-center Join Us!
 
   form.form.form-horizontal(roll='form', method='post', action='/register')
     .form-group
-      label(for='email') Email
+      label.control-label.col-sm-4(for='email') Email
+      .col-sm-4
         input.form-control.input-lg#email(type='email', name='email', autofocus:true)
+      .col-sm-4
     .form-group
-      label(for='password') Password
+      label.control-label.col-sm-4(for='password') Password
+      .col-sm-4
         input.form-control.input-lg#password(type='password', name='password')
-    button.btn.btn-primary(type='submit') Register
+      .col-sm-4
+    .form-group
+      .col-sm-4
+      .col-sm-4
+        button.btn.btn-primary(type='submit') Register
+      .col-sm-4
 
 
 block scripts

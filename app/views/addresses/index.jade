@@ -8,9 +8,10 @@ block content
       th Email
       th Twitter
     tbody
-      tr(style='background-color: #{address.color};');
-        td= address.name
-        td= address.email
-        td= address.twitter
+      each address in addresses
+        tr
+          td= address.name
+          td= address.email
+          td= address.twitter
 
 block scripts

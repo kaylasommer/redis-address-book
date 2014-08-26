@@ -7,12 +7,27 @@ exports.new = function(req, res){
 };
 
 exports.create = function(req, res){
-  User.register(req.body, function(err, user){
-    if(user){
-      res.redirect('/');
-    }else{
-      res.redirect('/register');
-    }
+  var credentials = {
+    email: req.body.email,
+    password: req.body.password
+  };
+  User.register(credentials, function(err, user){
+    var credentials = {
+      email: req.body.email,
+      password: req.body.password
+    };
+    User.authenticate(credentials, function(user){
+      if(user){
+        req.session.regenerate(function(){
+          req.session.userId = user._id;
+          req.session.save(function(){
+            res.redirect('/');
+          });
+        });
+      }else{
+        res.redirect('/register');
+      }
+    });
   });
 };
 
@@ -23,7 +38,11 @@ exports.login = function(req,res){
 };
 
 exports.authenticate = function(req, res){
-  User.authenticate(req.body, function(user){
+  var credentials = {
+    email: req.body.email,
+    password: req.body.password
+  };
+  User.authenticate(credentials, function(user){
     if(user){
       req.session.regenerate(function(){
         req.session.userId = user._id;

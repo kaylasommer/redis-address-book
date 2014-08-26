@@ -1,9 +1,7 @@
 'use strict';
 
-var Mongo  = require('mongodb');
 
 function Address(obj, id){
-  this._id     = new Mongo.ObjecID();
   this.name    = obj.name;
   this.color   = obj.color;
   this.twitter = obj.twitter;
@@ -20,6 +18,8 @@ Address.create = function(obj, id, cb){
   Address.collection.save(address, cb);
 };
 
-Address.findByUserId = function(userId, cb){
+Address.findAllByUserId = function(userId, cb){
   Address.collection.find({userId: userId}).toArray(cb);
 };
+
+module.exports = Address;
